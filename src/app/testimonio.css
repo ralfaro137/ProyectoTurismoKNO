@@ -1,0 +1,30 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.clientSection{
+    padding: 50px 20px;
+}
+
+.clientContainer{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.clientMember{
+    background-color: #cf9393;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #cf9393;
+    width: 500px;
+}
+
+.clientPhoto{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
