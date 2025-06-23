@@ -1,6 +1,5 @@
 'use client'
 import Link from "next/link";
-import path from "path";
 import React, { useState } from "react";
 
 const MenuComponent: React.FC = () => {
