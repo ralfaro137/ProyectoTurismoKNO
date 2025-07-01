@@ -1,7 +1,10 @@
 'use client'
 import MenuComponent from "@/componentes/MenuComponent";
+import VentanaMensajesComponent from "@/componentes/VentanaMensajesComponent";
+import { useAuth } from "@/context/AuthContext";
 import { ComentarioOut, ReporteComentariosOut } from "@/models/ReporteComentariosOut";
 import axios from "axios"
+import { useRouter } from "next/navigation";
 import React, { useEffect, useMemo, useState } from "react"
 
 const ReporteComentarios: React.FC = () => {
@@ -9,6 +12,25 @@ const ReporteComentarios: React.FC = () => {
     const [filtro, setFiltro] = useState<string>("");
     const [comentarios, setComentarios] = useState<ComentarioOut[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [mensajeModal, setMensajeModal] = useState<string>("");
+    const [mostrarModal, setMostrarModal] = useState<boolean>(false)
+    const {estaAutenticado, user} = useAuth();
+    const router = useRouter();
+    
+    useEffect(() => {
+        if(!estaAutenticado){
+            setMensajeModal("Usted no esta loguado en la aplicacion");
+            setMostrarModal(true);
+            return;
+        }
+    }, [estaAutenticado])
+    useEffect(() => {
+        if(user?.rol !== "1" && user?.rol !== "2"){
+            setMensajeModal("Usted no tiene los permisos para ver este apartado");
+            setMostrarModal(true);
+            return;
+        }
+    }, [user])
 
     useEffect(() => {
         const obtenerComentarios = async () => {
@@ -20,8 +42,14 @@ const ReporteComentarios: React.FC = () => {
             }
         }
 
-        obtenerComentarios();
-    }, [])
+        if(estaAutenticado)
+            obtenerComentarios();
+    }, []);
+
+    const cerrarModal = () =>{
+        setMostrarModal(false);
+        router.push("/login");
+    }
 
     const comentariosFiltrados = useMemo(()=>{
             return comentarios.filter(comentario => comentario.nombre.toUpperCase().includes(filtro.toUpperCase())
@@ -34,6 +62,10 @@ const ReporteComentarios: React.FC = () => {
     return (
         <div>
             <MenuComponent></MenuComponent>
+            <VentanaMensajesComponent
+                mostrar={mostrarModal}
+                mensaje={mensajeModal}
+                onClose={cerrarModal}></VentanaMensajesComponent>
             <div className="max-w-6xl mx-auto px-4 py-6">
                 <input 
                     value={filtro}
