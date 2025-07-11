@@ -12,10 +12,10 @@ const MenuComponent: React.FC = () => {
     return (
         <div>
 
-            <nav className="bg-white border-b shadow-md">
+            <nav className="bg-white border-b border-gray-200 shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-                    <Link href="/" className="text-2xl font-bold text-blue-900">
-                        Mi sitio turistico
+                    <Link href="/" className="text-2xl font-bold text-green-800 flex items-center gap-2">
+                        🌿<span>Green Tourism CR</span>
                     </Link>
                     <div className="md:hidden">
                         <button onClick={() => setIsOpen(!isOpen)} className="text-gray-600">
@@ -48,13 +48,13 @@ const MenuComponent: React.FC = () => {
                         </button>
                     </div>
                     <ul className="hidden md:flex space-x-6 text-gray-700 font-medium">
-                        <li><Link href="/testimonios">Testimonios</Link></li>
-                        <li><Link href="/contacto">Contacto</Link></li>
+                        <li><Link href="/testimonios" className="hover:text-green-700 transition-colors duration-200">Testimonios</Link></li>
+                        <li><Link href="/contacto" className="hover:text-green-700 transition-colors duration-200">Contacto</Link></li>
                         <li className="relative group">
                             <button>Reportes</button>
                             <ul className="absolute hidden group-hover:block bg-white border shadow-md mt2 py-2 rounded z-10">
-                                <li className="block px-4 py-2 hover:bg-gray-100"><Link href="/reporteUsuarios">Usuarios</Link></li>
-                                <li className="block px-4 py-2 hover:bg-gray-100"><Link href="/reporteComentarios">Comentarios</Link></li>
+                                <li className="block px-4 py-2 hover:bg-gray-100"><Link href="/reporteUsuarios" className="hover:text-green-700 transition-colors duration-200">Usuarios</Link></li>
+                                <li className="block px-4 py-2 hover:bg-gray-100"><Link href="/reporteComentarios" className="hover:text-green-700 transition-colors duration-200">Comentarios</Link></li>
                             </ul>
                         </li>
                     </ul>
@@ -62,8 +62,8 @@ const MenuComponent: React.FC = () => {
                 {
                     isOpen && (
                         <ul className="md:hidden px-4 py-4 space-y-2 text-gray-700 font-medium">
-                            <li><Link href="/testimonios">Testimonios</Link></li>
-                            <li><Link href="/contacto">Contacto</Link></li>
+                            <li><Link href="/testimonios" className="hover:text-green-700 transition-colors duration-200">Testimonios</Link></li>
+                            <li><Link href="/contacto" className="hover:text-green-700 transition-colors duration-200">Contacto</Link></li>
                             <li>
                                 <button className="w-full text-left"
                                     onClick={() => setIsReportOpen(!isReportOpen)}>
@@ -74,8 +74,8 @@ const MenuComponent: React.FC = () => {
                                 {
                                     isReportOpen && (
                                         <ul className="pl-4 mt-1 space-y-1">
-                                            <li><Link href="/reporteUsuarios">Usuarios</Link></li>
-                                            <li><Link href="/reporteComentarios">Comentarios</Link></li>
+                                            <li><Link href="/reporteUsuarios" className="hover:text-green-700 transition-colors duration-200">Usuarios</Link></li>
+                                            <li><Link href="/reporteComentarios" className="hover:text-green-700 transition-colors duration-200">Comentarios</Link></li>
                                         </ul>
                                     )
                                 }

@@ -34,23 +34,24 @@ const TestComponent : React.FC = () =>{
     }
 
     return (
-        <div className="min-h-screen bg-gray-800 flex items-center justify-center px-4">
-            <div className="text-gray-800 bg-white p-6 rounded-xl shadow-xl w-full max-w-sm text-center">
-                <h1 className="text-2xl font-bold mb-4">Verificiación de humanidad</h1>
+        <div>
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 w-full max-w-md text-center mx-auto">
+                <h1 className="text-xl font-semibold text-gray-800 mb-4">Verificiación de humanidad</h1>
                 {
                     !esHumano ? (
                         <div>
-                            <p className="mb-2">
+                            <p className="mb-4 text-gray-700 text-sm">
                                 ¿Cuánto es <strong>{num1} + {num2}</strong>?
                             </p>
                             <input
                                 value={respuesta}
                                 onChange={(e) => setRespuesta(e.target.value)}
-                                placeholder="Tu respuesta es: ">
+                                placeholder="Tu respuesta"
+                                className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-800 placeholder-gray-400">
                             </input>
                             <button
                                 onClick={verificarRespuesta}
-                                className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg shadow transition duration-300"
                                 >Verificar</button>
 
                         </div>
